@@ -24,10 +24,11 @@ extension UIColor {
 }
 
 extension UIFont {
-    static let boldRoboto18 = UIFont(name: "Roboto-Bold", size: CGFloat(18).ws)
+    static let regularRoboto12 = UIFont(name: "Roboto-Regular", size: CGFloat(12).ws)
+    static let regularRoboto14 = UIFont(name: "Roboto-Regular", size: CGFloat(14).ws)
     
+    static let mediumRoboto14 = UIFont(name: "Roboto-Medium", size: CGFloat(14).ws)
     static let mediumRoboto16 = UIFont(name: "Roboto-Medium", size: CGFloat(16).ws)
     
-    static let regularRoboto14 = UIFont(name: "Roboto-Regular", size: CGFloat(14).ws)
-    static let regularRoboto12 = UIFont(name: "Roboto-Regular", size: CGFloat(12).ws)
+    static let boldRoboto18 = UIFont(name: "Roboto-Bold", size: CGFloat(18).ws)
 }

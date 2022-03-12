@@ -26,6 +26,9 @@ class HomeViewController: UIViewController {
     @IBOutlet var longtitudeLabel: UILabel!
     
     @IBOutlet var infoView: UIView!
+    @IBOutlet var infoCollectionView: UICollectionView!
+    let identifierTICVC:String = "TransportationInfoCollViewCell"
+    var transInfoCell:TransportationInfoCollectionViewCell?
     
     @IBOutlet var bottomBarView: UIView!
     @IBOutlet var bottomBarInfoLabel: UILabel!
@@ -41,24 +44,38 @@ class HomeViewController: UIViewController {
     
     var user:User = User()
     
+    let titles:[String] = ["Yük Tipi", "Yükleme Tipi", "Yükleme Adedi", "Yüklerin Kilosu", "Yükleme Saati", "Hacim", "Çıkış Gümrük"]
+    let answers:[String] = ["Genel Kargo", "Paletli", "243", "24 Ton", "14:30", "67 m3", "Kapıkule"]
+    var infos:[TransportationInfoResponse] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setNeedsLayout()
         view.layoutIfNeeded()
+        
+        setTransportationInfos()
         
         DispatchQueue.main.async {
             self.setupViews()
             self.drawMap(defaultLatitude: -33.86, defaultLongitude: 151.20)
         }
         
+        infoCollectionView.register(UINib(nibName: "TransportationInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: identifierTICVC)
+        infoCollectionView.dataSource = self
+        infoCollectionView.delegate = self
+        
         setUpLocationServices()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setLocationTimerStatus(isOn: true)
+        appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.topSafeAreaColour
+        appDelegate.rootVC.bottomSafeArea.backgroundColor = UIColor.bottomSafeAreaColour
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         setLocationTimerStatus(isOn: false)
     }
     
@@ -80,6 +97,8 @@ class HomeViewController: UIViewController {
         longtitudeLabel.textColor = UIColor.textColour
         
         infoView.backgroundColor = UIColor.white
+        infoCollectionView.contentInset = UIEdgeInsets(top: CGFloat(20).ws, left: 0, bottom: CGFloat(10).ws, right: 0)
+        infoView.isHidden = false
         
         bottomBarView.roundCorners([.topLeft, .topRight], radius: CGFloat(20).ws)
         bottomBarView.backgroundColor = UIColor.bottomSafeAreaColour
@@ -95,6 +114,13 @@ class HomeViewController: UIViewController {
         bottomBarConfirmButton.layer.cornerRadius = CGFloat(10).ws
         
         infoViewBottomC.constant = CGFloat(-310).ws
+    }
+    
+    private func setTransportationInfos() {
+        for (index, title) in titles.enumerated() {
+            let newInfo = TransportationInfoResponse(title: title, info: answers[index])
+            infos.append(newInfo)
+        }
     }
     
     private func setUpLocationServices() {
@@ -177,7 +203,16 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func documentClicked(_ sender: UIButton) {
+        if let imageVC = appDelegate.mainStoryboard.instantiateViewController(withIdentifier: "ImageVC") as? ImageViewController {
+            imageVC.documentImage = UIImage(named: "DocumentImage")
+            imageVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            present(imageVC, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func confirmClicked(_ sender: UIButton) {
+        
     }
 }
 
@@ -217,10 +252,10 @@ extension HomeViewController: CLLocationManagerDelegate {
             self.placeUserLocation(userLocation: coordinate)
         })
             
-        //convertToAddresUsing(location: coordinate)
+        //convertToAddresUsing(location: coordinate) //Cannot use
     }
     
-    //Can not use the Geocoding API because it is not free
+    //Cannot use the Geocoding API because it is not free
     private func convertToAddresUsing(location: CLLocationCoordinate2D) {
         ServiceManager.shared.getAddressDetail(coordinate: location) { (response, errorCode, isOK) in
             if isOK {
@@ -236,5 +271,29 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location failed - \(error.localizedDescription)")
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return infos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(12).ws
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        transInfoCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierTICVC, for: indexPath) as? TransportationInfoCollectionViewCell
+        
+        transInfoCell?.titleLabel.text = infos[indexPath.row].title
+        transInfoCell?.infoLabel.text = infos[indexPath.row].info
+        
+        return transInfoCell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: CGFloat(122).ws, height: CGFloat(33).ws)
     }
 }

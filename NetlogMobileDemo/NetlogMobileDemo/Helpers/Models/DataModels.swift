@@ -21,3 +21,8 @@ struct User {
     var location2D:CLLocationCoordinate2D?
     var geoLocatedAddress:String?
 }
+
+struct TransportationInfoResponse:Codable {
+    let title:String?
+    let info:String?
+}

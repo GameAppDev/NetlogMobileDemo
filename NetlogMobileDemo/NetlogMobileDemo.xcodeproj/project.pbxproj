@@ -21,6 +21,9 @@
 		18AFC2EA27DCCCA600580D89 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2E927DCCCA600580D89 /* TimerManager.swift */; };
 		18AFC2EF27DCCEB900580D89 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2EE27DCCEB900580D89 /* DataModels.swift */; };
 		18AFC2F127DCE73E00580D89 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2F027DCE73E00580D89 /* ServiceManager.swift */; };
+		18AFC2F627DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2F427DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift */; };
+		18AFC2F727DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AFC2F527DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib */; };
+		18AFC2F927DD0E5B00580D89 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2F827DD0E5B00580D89 /* ImageViewController.swift */; };
 		B6331040E778A6BC159C06F6 /* Pods_NetlogMobileDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +44,9 @@
 		18AFC2E927DCCCA600580D89 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		18AFC2EE27DCCEB900580D89 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		18AFC2F027DCE73E00580D89 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		18AFC2F427DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		18AFC2F527DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportationInfoCollectionViewCell.xib; sourceTree = "<group>"; };
+		18AFC2F827DD0E5B00580D89 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetlogMobileDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C8B7D16C141C2C1A8A86B7 /* Pods-NetlogMobileDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetlogMobileDemo.debug.xcconfig"; path = "Target Support Files/Pods-NetlogMobileDemo/Pods-NetlogMobileDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E9299CBC4092F21E91B5929F /* Pods-NetlogMobileDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetlogMobileDemo.release.xcconfig"; path = "Target Support Files/Pods-NetlogMobileDemo/Pods-NetlogMobileDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 				18824F7D27DCAA0400F9B695 /* RootViewController.swift */,
 				18824F8127DCABA600F9B695 /* Storyboards */,
 				18824F8227DCABF800F9B695 /* Controllers */,
+				18AFC2F227DD017700580D89 /* Views */,
 				18824F8327DCAC2B00F9B695 /* Helpers */,
 				18AFC2E027DCAF7000580D89 /* Fonts */,
 				182055F227DCA52B0096AC19 /* Assets.xcassets */,
@@ -112,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */,
+				18AFC2F827DD0E5B00580D89 /* ImageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -144,6 +152,23 @@
 				18AFC2F027DCE73E00580D89 /* ServiceManager.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		18AFC2F227DD017700580D89 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18AFC2F327DD018300580D89 /* CollectionViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18AFC2F327DD018300580D89 /* CollectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				18AFC2F427DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift */,
+				18AFC2F527DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib */,
+			);
+			path = CollectionViews;
 			sourceTree = "<group>";
 		};
 		ED66A5FC571A85B9F3C9EE8B /* Pods */ = {
@@ -221,6 +246,7 @@
 				182055F327DCA52B0096AC19 /* Assets.xcassets in Resources */,
 				18AFC2E427DCAFAD00580D89 /* Roboto-Bold.ttf in Resources */,
 				182055F127DCA52A0096AC19 /* Main.storyboard in Resources */,
+				18AFC2F727DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,8 +301,10 @@
 			files = (
 				18AFC2E827DCB07E00580D89 /* Extensions.swift in Sources */,
 				18AFC2EF27DCCEB900580D89 /* DataModels.swift in Sources */,
+				18AFC2F927DD0E5B00580D89 /* ImageViewController.swift in Sources */,
 				18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */,
 				182055EA27DCA52A0096AC19 /* AppDelegate.swift in Sources */,
+				18AFC2F627DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift in Sources */,
 				18AFC2EA27DCCCA600580D89 /* TimerManager.swift in Sources */,
 				18AFC2F127DCE73E00580D89 /* ServiceManager.swift in Sources */,
 				18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */,
