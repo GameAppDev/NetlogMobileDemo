@@ -11,6 +11,10 @@
 		182055F127DCA52A0096AC19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182055EF27DCA52A0096AC19 /* Main.storyboard */; };
 		182055F327DCA52B0096AC19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182055F227DCA52B0096AC19 /* Assets.xcassets */; };
 		182055F627DCA52B0096AC19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182055F427DCA52B0096AC19 /* LaunchScreen.storyboard */; };
+		18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F7D27DCAA0400F9B695 /* RootViewController.swift */; };
+		18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */; };
+		18824F8527DCAC3A00F9B695 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F8427DCAC3A00F9B695 /* AppStyle.swift */; };
+		B6331040E778A6BC159C06F6 /* Pods_NetlogMobileDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,12 @@
 		182055F227DCA52B0096AC19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		182055F527DCA52B0096AC19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182055F727DCA52B0096AC19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18824F7D27DCAA0400F9B695 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18824F8427DCAC3A00F9B695 /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
+		235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetlogMobileDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82C8B7D16C141C2C1A8A86B7 /* Pods-NetlogMobileDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetlogMobileDemo.debug.xcconfig"; path = "Target Support Files/Pods-NetlogMobileDemo/Pods-NetlogMobileDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E9299CBC4092F21E91B5929F /* Pods-NetlogMobileDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetlogMobileDemo.release.xcconfig"; path = "Target Support Files/Pods-NetlogMobileDemo/Pods-NetlogMobileDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6331040E778A6BC159C06F6 /* Pods_NetlogMobileDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14D96B557D2CCB9A4422508B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		182055DD27DCA52A0096AC19 = {
 			isa = PBXGroup;
 			children = (
 				182055E827DCA52A0096AC19 /* NetlogMobileDemo */,
 				182055E727DCA52A0096AC19 /* Products */,
+				ED66A5FC571A85B9F3C9EE8B /* Pods */,
+				14D96B557D2CCB9A4422508B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,12 +74,48 @@
 			isa = PBXGroup;
 			children = (
 				182055E927DCA52A0096AC19 /* AppDelegate.swift */,
-				182055EF27DCA52A0096AC19 /* Main.storyboard */,
+				18824F7D27DCAA0400F9B695 /* RootViewController.swift */,
+				18824F8127DCABA600F9B695 /* Storyboards */,
+				18824F8227DCABF800F9B695 /* Controllers */,
+				18824F8327DCAC2B00F9B695 /* Helpers */,
 				182055F227DCA52B0096AC19 /* Assets.xcassets */,
-				182055F427DCA52B0096AC19 /* LaunchScreen.storyboard */,
 				182055F727DCA52B0096AC19 /* Info.plist */,
 			);
 			path = NetlogMobileDemo;
+			sourceTree = "<group>";
+		};
+		18824F8127DCABA600F9B695 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				182055EF27DCA52A0096AC19 /* Main.storyboard */,
+				182055F427DCA52B0096AC19 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		18824F8227DCABF800F9B695 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18824F8327DCAC2B00F9B695 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				18824F8427DCAC3A00F9B695 /* AppStyle.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ED66A5FC571A85B9F3C9EE8B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				82C8B7D16C141C2C1A8A86B7 /* Pods-NetlogMobileDemo.debug.xcconfig */,
+				E9299CBC4092F21E91B5929F /* Pods-NetlogMobileDemo.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -68,6 +125,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 182055FA27DCA52B0096AC19 /* Build configuration list for PBXNativeTarget "NetlogMobileDemo" */;
 			buildPhases = (
+				794878C01D0616FAE7215A88 /* [CP] Check Pods Manifest.lock */,
 				182055E227DCA52A0096AC19 /* Sources */,
 				182055E327DCA52A0096AC19 /* Frameworks */,
 				182055E427DCA52A0096AC19 /* Resources */,
@@ -127,12 +185,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		794878C01D0616FAE7215A88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NetlogMobileDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		182055E227DCA52A0096AC19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */,
 				182055EA27DCA52A0096AC19 /* AppDelegate.swift in Sources */,
+				18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */,
+				18824F8527DCAC3A00F9B695 /* AppStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +362,7 @@
 		};
 		182055FB27DCA52B0096AC19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82C8B7D16C141C2C1A8A86B7 /* Pods-NetlogMobileDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -305,6 +392,7 @@
 		};
 		182055FC27DCA52B0096AC19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9299CBC4092F21E91B5929F /* Pods-NetlogMobileDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

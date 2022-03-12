@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="RootVC" id="BYZ-38-t0r" customClass="RootViewController" customModule="NetlogMobileDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-6e-uhy" userLabel="ActiveView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhf-gH-krj" userLabel="TopSAView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih3-fh-gB8" userLabel="BottomSAView">
+                                <rect key="frame" x="0.0" y="568" width="320" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ioJ-6e-uhy" secondAttribute="bottom" id="1Cw-Zc-QnD"/>
+                            <constraint firstAttribute="bottom" secondItem="ih3-fh-gB8" secondAttribute="bottom" id="4FF-cw-Tro"/>
+                            <constraint firstItem="ioJ-6e-uhy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Axq-sQ-0w2"/>
+                            <constraint firstItem="nhf-gH-krj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CX4-6t-R4J"/>
+                            <constraint firstItem="ioJ-6e-uhy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M39-No-7CR"/>
+                            <constraint firstAttribute="trailing" secondItem="nhf-gH-krj" secondAttribute="trailing" id="Q8f-RF-RpF"/>
+                            <constraint firstAttribute="trailing" secondItem="ih3-fh-gB8" secondAttribute="trailing" id="W8A-mc-gQv"/>
+                            <constraint firstItem="nhf-gH-krj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="aPq-OC-0AF"/>
+                            <constraint firstItem="nhf-gH-krj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bP7-aV-UJV"/>
+                            <constraint firstItem="ih3-fh-gB8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="c8K-1n-h6M"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ih3-fh-gB8" secondAttribute="top" id="dOl-Qn-cre"/>
+                            <constraint firstItem="ioJ-6e-uhy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dbt-O4-39h"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activeView" destination="ioJ-6e-uhy" id="X6s-zz-5q5"/>
+                        <outlet property="bottomSafeArea" destination="ih3-fh-gB8" id="LAM-0B-A7W"/>
+                        <outlet property="topSafeArea" destination="nhf-gH-krj" id="Xeh-8b-6zi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88" y="92"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="AdS-fW-gSs">
+            <objects>
+                <viewController storyboardIdentifier="HomeVC" id="Yud-Vc-jvT" customClass="HomeViewController" customModule="NetlogMobileDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z1H-NE-Ghi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5cA-N7-7Cs"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uzi-Xb-FIa"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RvZ-95-qBH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2300.625" y="91.901408450704224"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YvQ-Wa-UH6">
+            <objects>
+                <navigationController storyboardIdentifier="HomeNC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Z1W-42-4cE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ram-zU-k1e">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yud-Vc-jvT" kind="relationship" relationship="rootViewController" id="pme-Sg-hBr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLi-o1-yJa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301.25" y="91.901408450704224"/>
+        </scene>
+    </scenes>
+</document>
