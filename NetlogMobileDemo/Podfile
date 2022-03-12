@@ -6,5 +6,6 @@ target 'NetlogMobileDemo' do
   use_frameworks!
 
   # Pods for NetlogMobileDemo
+  pod 'GoogleMaps'
 
 end
