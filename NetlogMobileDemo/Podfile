@@ -7,5 +7,6 @@ target 'NetlogMobileDemo' do
 
   # Pods for NetlogMobileDemo
   pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
 end

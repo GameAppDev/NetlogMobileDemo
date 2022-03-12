@@ -10,6 +10,8 @@
 
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 let appMode = "test" // test or live
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -27,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set(lang, forKey: "LANG")
         
         mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        GMSServices.provideAPIKey("AIzaSyB5LIu9bpO5LG3tn9uyysp1N04k9YpUt6A")
+        GMSPlacesClient.provideAPIKey("AIzaSyB5LIu9bpO5LG3tn9uyysp1N04k9YpUt6A")
         
         openRoot()
         

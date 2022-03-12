@@ -14,6 +14,13 @@
 		18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F7D27DCAA0400F9B695 /* RootViewController.swift */; };
 		18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */; };
 		18824F8527DCAC3A00F9B695 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F8427DCAC3A00F9B695 /* AppStyle.swift */; };
+		18AFC2E427DCAFAD00580D89 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AFC2E127DCAFAD00580D89 /* Roboto-Bold.ttf */; };
+		18AFC2E527DCAFAD00580D89 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AFC2E227DCAFAD00580D89 /* Roboto-Medium.ttf */; };
+		18AFC2E627DCAFAD00580D89 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AFC2E327DCAFAD00580D89 /* Roboto-Regular.ttf */; };
+		18AFC2E827DCB07E00580D89 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2E727DCB07E00580D89 /* Extensions.swift */; };
+		18AFC2EA27DCCCA600580D89 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2E927DCCCA600580D89 /* TimerManager.swift */; };
+		18AFC2EF27DCCEB900580D89 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2EE27DCCEB900580D89 /* DataModels.swift */; };
+		18AFC2F127DCE73E00580D89 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2F027DCE73E00580D89 /* ServiceManager.swift */; };
 		B6331040E778A6BC159C06F6 /* Pods_NetlogMobileDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +34,13 @@
 		18824F7D27DCAA0400F9B695 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18824F8427DCAC3A00F9B695 /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
+		18AFC2E127DCAFAD00580D89 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		18AFC2E227DCAFAD00580D89 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		18AFC2E327DCAFAD00580D89 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		18AFC2E727DCB07E00580D89 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		18AFC2E927DCCCA600580D89 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		18AFC2EE27DCCEB900580D89 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
+		18AFC2F027DCE73E00580D89 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetlogMobileDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C8B7D16C141C2C1A8A86B7 /* Pods-NetlogMobileDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetlogMobileDemo.debug.xcconfig"; path = "Target Support Files/Pods-NetlogMobileDemo/Pods-NetlogMobileDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E9299CBC4092F21E91B5929F /* Pods-NetlogMobileDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetlogMobileDemo.release.xcconfig"; path = "Target Support Files/Pods-NetlogMobileDemo/Pods-NetlogMobileDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +92,7 @@
 				18824F8127DCABA600F9B695 /* Storyboards */,
 				18824F8227DCABF800F9B695 /* Controllers */,
 				18824F8327DCAC2B00F9B695 /* Helpers */,
+				18AFC2E027DCAF7000580D89 /* Fonts */,
 				182055F227DCA52B0096AC19 /* Assets.xcassets */,
 				182055F727DCA52B0096AC19 /* Info.plist */,
 			);
@@ -105,8 +120,30 @@
 			isa = PBXGroup;
 			children = (
 				18824F8427DCAC3A00F9B695 /* AppStyle.swift */,
+				18AFC2E727DCB07E00580D89 /* Extensions.swift */,
+				18AFC2E927DCCCA600580D89 /* TimerManager.swift */,
+				18AFC2ED27DCCE8C00580D89 /* Models */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		18AFC2E027DCAF7000580D89 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				18AFC2E127DCAFAD00580D89 /* Roboto-Bold.ttf */,
+				18AFC2E227DCAFAD00580D89 /* Roboto-Medium.ttf */,
+				18AFC2E327DCAFAD00580D89 /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		18AFC2ED27DCCE8C00580D89 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18AFC2EE27DCCEB900580D89 /* DataModels.swift */,
+				18AFC2F027DCE73E00580D89 /* ServiceManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		ED66A5FC571A85B9F3C9EE8B /* Pods */ = {
@@ -178,8 +215,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AFC2E627DCAFAD00580D89 /* Roboto-Regular.ttf in Resources */,
+				18AFC2E527DCAFAD00580D89 /* Roboto-Medium.ttf in Resources */,
 				182055F627DCA52B0096AC19 /* LaunchScreen.storyboard in Resources */,
 				182055F327DCA52B0096AC19 /* Assets.xcassets in Resources */,
+				18AFC2E427DCAFAD00580D89 /* Roboto-Bold.ttf in Resources */,
 				182055F127DCA52A0096AC19 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,8 +273,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AFC2E827DCB07E00580D89 /* Extensions.swift in Sources */,
+				18AFC2EF27DCCEB900580D89 /* DataModels.swift in Sources */,
 				18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */,
 				182055EA27DCA52A0096AC19 /* AppDelegate.swift in Sources */,
+				18AFC2EA27DCCCA600580D89 /* TimerManager.swift in Sources */,
+				18AFC2F127DCE73E00580D89 /* ServiceManager.swift in Sources */,
 				18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */,
 				18824F8527DCAC3A00F9B695 /* AppStyle.swift in Sources */,
 			);
