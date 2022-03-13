@@ -25,28 +25,34 @@ extension UITableView {
 
 extension UIViewController {
     
-    func showAlert(with mesaj:String, title:String? = "") {
-        DispatchQueue.main.async(execute: {
-            let app = UIApplication.shared.delegate as! AppDelegate
-            let rootVC = app.window!.rootViewController as! RootViewController
-
-            let alertCtrl = UIAlertController(title: title, message: mesaj, preferredStyle: UIAlertController.Style.alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertCtrl.addAction(action)
-            
-            rootVC.present(alertCtrl, animated: true, completion: nil)
-        })
-    }
-    
-    func showPopupWith2Buttons(with message:String, title:String, yesButtonText:String, noButtonText:String, yesTapped:(()->Void)?) {
+    func showAlert(with message:String, title:String, yesButtonText:String, noButtonText:String?, yesTapped:(()->Void)?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: yesButtonText, style: .default) { (_) in
             yesTapped?()
         }
-        let cancelAction = UIAlertAction(title: noButtonText, style: .cancel, handler: nil)
+        if let cancelText = noButtonText {
+            let cancelAction = UIAlertAction(title: cancelText, style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+        }
         alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showActionSheet(title: String?, message: String?, action1Title: String?, action1Handler: ((UIAlertAction) -> Swift.Void)? = nil, action2Title: String?, action2Handler: ((UIAlertAction) -> Swift.Void)? = nil) {
+
+        let alertContr = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+
+        if let action1Title = action1Title {
+            let action1 = UIAlertAction(title: action1Title, style: .default, handler: action1Handler)
+            alertContr.addAction(action1)
+        }
+        if let action2Title = action2Title {
+            let action2 = UIAlertAction(title: action2Title, style: .destructive, handler: action2Handler)
+            alertContr.addAction(action2)
+        }
+        alertContr.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+
+        self.present(alertContr, animated: true, completion: nil)
     }
 }
 

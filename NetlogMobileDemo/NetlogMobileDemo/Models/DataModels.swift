@@ -11,6 +11,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 struct Address:Codable {
     let lat:Double?
@@ -25,4 +26,9 @@ struct User {
 struct TransportationInfoResponse:Codable {
     let title:String?
     let info:String?
+}
+
+struct Image {
+    var data:Data?
+    var type:String?
 }

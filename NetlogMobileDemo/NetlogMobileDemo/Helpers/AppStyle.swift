@@ -21,6 +21,7 @@ extension UIColor {
     static let navBarBGColour = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
     static let selectionViewColour = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
     static let textColour = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+    static let imageViewBGColour = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
 }
 
 extension UIFont {

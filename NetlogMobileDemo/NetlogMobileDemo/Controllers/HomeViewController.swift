@@ -158,8 +158,6 @@ class HomeViewController: UIViewController {
     }
     
     private func placeUserLocation(userLocation: CLLocationCoordinate2D) {
-        //googleMap!.clear()
-        
         let userLatitude:CLLocationDegrees = userLocation.latitude
         let userLongitude:CLLocationDegrees = userLocation.longitude
 
@@ -212,7 +210,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func confirmClicked(_ sender: UIButton) {
-        
+        if let addImageVC = appDelegate.mainStoryboard.instantiateViewController(withIdentifier: "AddImageVC") as? AddImageViewController {
+            navigationController?.pushViewController(addImageVC, animated: true)
+        }
     }
 }
 
@@ -255,20 +255,6 @@ extension HomeViewController: CLLocationManagerDelegate {
         //convertToAddresUsing(location: coordinate) //Cannot use
     }
     
-    //Cannot use the Geocoding API because it is not free
-    private func convertToAddresUsing(location: CLLocationCoordinate2D) {
-        ServiceManager.shared.getAddressDetail(coordinate: location) { (response, errorCode, isOK) in
-            if isOK {
-                if let geoAddress = response {
-                    self.user.geoLocatedAddress = geoAddress
-                }
-            }
-            else {
-                self.showAlert(with: "\(errorCode): \(response ?? "No Response")")
-            }
-        }
-    }
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location failed - \(error.localizedDescription)")
     }
@@ -295,5 +281,22 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: CGFloat(122).ws, height: CGFloat(33).ws)
+    }
+}
+
+extension HomeViewController {
+    
+    //Cannot use the Geocoding API because it is not free
+    private func convertToAddresUsing(location: CLLocationCoordinate2D) {
+        ServiceManager.shared.getAddressDetail(coordinate: location) { (response, errorCode, isOK) in
+            if isOK {
+                if let geoAddress = response {
+                    self.user.geoLocatedAddress = geoAddress
+                }
+            }
+            else {
+                self.showAlert(with: "\(errorCode): \(response ?? "No Response")", title: "", yesButtonText: "OK", noButtonText: nil, yesTapped: nil)
+            }
+        }
     }
 }

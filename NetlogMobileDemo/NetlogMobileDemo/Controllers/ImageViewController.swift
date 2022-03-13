@@ -46,8 +46,8 @@ class ImageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.white
-        appDelegate.rootVC.bottomSafeArea.backgroundColor = UIColor.white
+        appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.black
+        appDelegate.rootVC.bottomSafeArea.backgroundColor = UIColor.black
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,6 +58,7 @@ class ImageViewController: UIViewController {
     
     private func setupViews() {
         cancelView.backgroundColor = UIColor.white
+        cancelView.layer.cornerRadius = cancelView.frame.height/2
     }
     
     @IBAction func backClicked(_ sender: UIButton) {
