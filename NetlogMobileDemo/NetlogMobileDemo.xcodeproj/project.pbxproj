@@ -15,6 +15,7 @@
 		18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */; };
 		18824F8527DCAC3A00F9B695 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F8427DCAC3A00F9B695 /* AppStyle.swift */; };
 		18AE573727DE056100901A91 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE573627DE056100901A91 /* AddImageViewController.swift */; };
+		18AE573F27DE2DA900901A91 /* NetlogMobileDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE573E27DE2DA900901A91 /* NetlogMobileDemoTests.swift */; };
 		18AFC2E427DCAFAD00580D89 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AFC2E127DCAFAD00580D89 /* Roboto-Bold.ttf */; };
 		18AFC2E527DCAFAD00580D89 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AFC2E227DCAFAD00580D89 /* Roboto-Medium.ttf */; };
 		18AFC2E627DCAFAD00580D89 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AFC2E327DCAFAD00580D89 /* Roboto-Regular.ttf */; };
@@ -28,6 +29,16 @@
 		B6331040E778A6BC159C06F6 /* Pods_NetlogMobileDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		18AE574027DE2DA900901A91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182055DE27DCA52A0096AC19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 182055E527DCA52A0096AC19;
+			remoteInfo = NetlogMobileDemo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		182055E627DCA52A0096AC19 /* NetlogMobileDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetlogMobileDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		182055E927DCA52A0096AC19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +50,8 @@
 		18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18824F8427DCAC3A00F9B695 /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		18AE573627DE056100901A91 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
+		18AE573C27DE2DA900901A91 /* NetlogMobileDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetlogMobileDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18AE573E27DE2DA900901A91 /* NetlogMobileDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetlogMobileDemoTests.swift; sourceTree = "<group>"; };
 		18AFC2E127DCAFAD00580D89 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		18AFC2E227DCAFAD00580D89 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		18AFC2E327DCAFAD00580D89 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -63,6 +76,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18AE573927DE2DA900901A91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				182055E827DCA52A0096AC19 /* NetlogMobileDemo */,
+				18AE573D27DE2DA900901A91 /* NetlogMobileDemoTests */,
 				182055E727DCA52A0096AC19 /* Products */,
 				ED66A5FC571A85B9F3C9EE8B /* Pods */,
 				14D96B557D2CCB9A4422508B /* Frameworks */,
@@ -88,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				182055E627DCA52A0096AC19 /* NetlogMobileDemo.app */,
+				18AE573C27DE2DA900901A91 /* NetlogMobileDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +158,14 @@
 				18AFC2E927DCCCA600580D89 /* TimerManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		18AE573D27DE2DA900901A91 /* NetlogMobileDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				18AE573E27DE2DA900901A91 /* NetlogMobileDemoTests.swift */,
+			);
+			path = NetlogMobileDemoTests;
 			sourceTree = "<group>";
 		};
 		18AFC2E027DCAF7000580D89 /* Fonts */ = {
@@ -205,6 +235,24 @@
 			productReference = 182055E627DCA52A0096AC19 /* NetlogMobileDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		18AE573B27DE2DA900901A91 /* NetlogMobileDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18AE574227DE2DA900901A91 /* Build configuration list for PBXNativeTarget "NetlogMobileDemoTests" */;
+			buildPhases = (
+				18AE573827DE2DA900901A91 /* Sources */,
+				18AE573927DE2DA900901A91 /* Frameworks */,
+				18AE573A27DE2DA900901A91 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18AE574127DE2DA900901A91 /* PBXTargetDependency */,
+			);
+			name = NetlogMobileDemoTests;
+			productName = NetlogMobileDemoTests;
+			productReference = 18AE573C27DE2DA900901A91 /* NetlogMobileDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -217,6 +265,10 @@
 				TargetAttributes = {
 					182055E527DCA52A0096AC19 = {
 						CreatedOnToolsVersion = 13.0;
+					};
+					18AE573B27DE2DA900901A91 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 182055E527DCA52A0096AC19;
 					};
 				};
 			};
@@ -234,6 +286,7 @@
 			projectRoot = "";
 			targets = (
 				182055E527DCA52A0096AC19 /* NetlogMobileDemo */,
+				18AE573B27DE2DA900901A91 /* NetlogMobileDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +303,13 @@
 				18AFC2E427DCAFAD00580D89 /* Roboto-Bold.ttf in Resources */,
 				182055F127DCA52A0096AC19 /* Main.storyboard in Resources */,
 				18AFC2F727DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18AE573A27DE2DA900901A91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +376,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18AE573827DE2DA900901A91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18AE573F27DE2DA900901A91 /* NetlogMobileDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18AE574127DE2DA900901A91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 182055E527DCA52A0096AC19 /* NetlogMobileDemo */;
+			targetProxy = 18AE574027DE2DA900901A91 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		182055EF27DCA52A0096AC19 /* Main.storyboard */ = {
@@ -514,6 +590,52 @@
 			};
 			name = Release;
 		};
+		18AE574327DE2DA900901A91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Oguzhan.NetlogMobileDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetlogMobileDemo.app/NetlogMobileDemo";
+			};
+			name = Debug;
+		};
+		18AE574427DE2DA900901A91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Oguzhan.NetlogMobileDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetlogMobileDemo.app/NetlogMobileDemo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -531,6 +653,15 @@
 			buildConfigurations = (
 				182055FB27DCA52B0096AC19 /* Debug */,
 				182055FC27DCA52B0096AC19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18AE574227DE2DA900901A91 /* Build configuration list for PBXNativeTarget "NetlogMobileDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18AE574327DE2DA900901A91 /* Debug */,
+				18AE574427DE2DA900901A91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

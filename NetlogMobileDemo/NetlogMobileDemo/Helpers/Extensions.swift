@@ -83,3 +83,35 @@ extension UIView {
         self.layer.mask = mask
     }
 }
+
+extension String {
+    
+    func replace(string:String, replacement:String) -> String {
+        return self.replacingOccurrences(of: string, with: replacement, options: NSString.CompareOptions.literal, range: nil)
+    }
+    
+    func toDate() -> Date {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "tr_TR")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:SSZ"
+        if let theDate = dateFormatter.date(from:self) {
+            return theDate
+        }
+        let currentDate = Date()
+        return currentDate
+    }
+}
+
+extension Date {
+    
+    func toString(formatType: String ) -> String {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = formatType
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        return dateFormatter.string(from: self)
+    }
+}
