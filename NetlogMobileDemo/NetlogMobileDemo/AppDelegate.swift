@@ -11,7 +11,7 @@
 
 import UIKit
 import GoogleMaps
-import GooglePlaces
+//import GooglePlaces
 
 let appMode = "test" // test or live
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         GMSServices.provideAPIKey("AIzaSyB5LIu9bpO5LG3tn9uyysp1N04k9YpUt6A")
-        GMSPlacesClient.provideAPIKey("AIzaSyB5LIu9bpO5LG3tn9uyysp1N04k9YpUt6A")
+        //GMSPlacesClient.provideAPIKey("AIzaSyB5LIu9bpO5LG3tn9uyysp1N04k9YpUt6A")
         
         openRoot()
         
