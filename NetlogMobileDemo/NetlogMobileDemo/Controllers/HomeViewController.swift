@@ -10,7 +10,6 @@
 
 
 import UIKit
-import GoogleMaps
 
 class HomeViewController: UIViewController {
 
@@ -21,71 +20,34 @@ class HomeViewController: UIViewController {
     @IBOutlet var notifCountBGView: UIView!
     @IBOutlet var notifCountLabel: UILabel!
     
-    @IBOutlet var mapView: UIView!
-    
-    @IBOutlet var latitudeLabel: UILabel!
-    @IBOutlet var longtitudeLabel: UILabel!
-    
-    @IBOutlet var infoView: UIView!
-    @IBOutlet var infoCollectionView: UICollectionView!
-    let identifierTransportationInfoCVC:String = "TransportationInfoCollViewCell"
-    var transInfoCell:TransportationInfoCollectionViewCell?
-    
     @IBOutlet var tabCollectionView: UICollectionView!
     let identifierTabItemCVC:String = "TabItemCollViewCell"
     var tabItemCell:TabItemCollectionViewCell?
     
-    @IBOutlet var bottomBarView: UIView!
-    @IBOutlet var bottomBarInfoLabel: UILabel!
-    @IBOutlet var bottomBarConfirmButton: UIButton!
-    
-    @IBOutlet var infoViewBottomC: NSLayoutConstraint! //-310 -20
-    
-    var googleMap:GMSMapView?
-    let defaultMaxZoom:Float = 14
-    let defaultMinZoom:Float = 1
-    
-    let locationManager = CLLocationManager()
-    
-    var user:User = User()
+    @IBOutlet var scrollableView: UIView!
     
     var tabImages:[TabImage] = []
-    
-    var infos:[TransportationInfoResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
-        setTransportationInfos()
         setTabImages()
         
         DispatchQueue.main.async {
             self.setupViews()
-            self.drawMap(defaultLatitude: -33.86, defaultLongitude: 151.20)
         }
         
-        infoCollectionView.registerCell(nibName: "TransportationInfoCollectionViewCell", identifier: identifierTransportationInfoCVC)
-        infoCollectionView.dataSource = self
-        infoCollectionView.delegate = self
         tabCollectionView.registerCell(nibName: "TabItemCollectionViewCell", identifier: identifierTabItemCVC)
         tabCollectionView.dataSource = self
         tabCollectionView.delegate = self
-        
-        setUpLocationServices()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setLocationTimerStatus(isOn: true)
         appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.topSafeAreaColour
         appDelegate.rootVC.bottomSafeArea.backgroundColor = UIColor.bottomSafeAreaColour
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        setLocationTimerStatus(isOn: false)
     }
     
     private func setupViews() {
@@ -106,39 +68,10 @@ class HomeViewController: UIViewController {
         
         tabCollectionView.backgroundColor = UIColor.selectionViewColour
         
-        latitudeLabel.font = UIFont.mediumRoboto16
-        latitudeLabel.textColor = UIColor.textColour
-        longtitudeLabel.font = UIFont.mediumRoboto16
-        longtitudeLabel.textColor = UIColor.textColour
-        
-        infoView.backgroundColor = UIColor.white
-        infoCollectionView.contentInset = UIEdgeInsets(top: CGFloat(20).ws, left: 0, bottom: CGFloat(10).ws, right: 0)
-        infoView.isHidden = false
-        
-        bottomBarView.roundCorners([.topLeft, .topRight], radius: CGFloat(20).ws)
-        bottomBarView.backgroundColor = UIColor.bottomSafeAreaColour
-        
-        bottomBarInfoLabel.font = UIFont.regularRoboto14
-        bottomBarInfoLabel.textColor = UIColor.white
-        bottomBarInfoLabel.text = "YÜKLEME AKIŞI - 1/4" //Should be dynamic
-        
-        bottomBarConfirmButton.titleLabel?.font = UIFont.mediumRoboto16
-        bottomBarConfirmButton.setTitleColor(UIColor.bottomSafeAreaColour, for: .normal)
-        bottomBarConfirmButton.setTitle("YÜKLEME NOKTASINA GELDİM", for: .normal)
-        bottomBarConfirmButton.backgroundColor = UIColor.white
-        bottomBarConfirmButton.layer.cornerRadius = CGFloat(10).ws
-        
-        infoViewBottomC.constant = CGFloat(-310).ws
-    }
-    
-    private func setTransportationInfos() {
-        let titles:[String] = ["Yük Tipi", "Yükleme Tipi", "Yükleme Adedi", "Yüklerin Kilosu", "Yükleme Saati", "Hacim", "Çıkış Gümrük"]
-        let answers:[String] = ["Genel Kargo", "Paletli", "243", "24 Ton", "14:30", "67 m3", "Kapıkule"]
-        
-        for (index, title) in titles.enumerated() {
-            let newInfo = TransportationInfoResponse(title: title, info: answers[index])
-            infos.append(newInfo)
-        }
+        let mapView = MapView(frame: CGRect(x: 0, y: 0, width: scrollableView.frame.width, height: scrollableView.frame.height))
+        mapView.documentButton.addTarget(self, action: #selector(documentClicked(sender:)), for: .touchUpInside)
+        mapView.bottomBarConfirmButton.addTarget(self, action: #selector(confirmClicked(sender:)), for: .touchUpInside)
+        scrollableView.addSubview(mapView)
     }
     
     private func setTabImages() {
@@ -150,85 +83,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func setUpLocationServices() {
-        locationManager.delegate = self;
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-    private func setLocationTimerStatus(isOn:Bool) {
-        TimerManager.locationTimer?.invalidate()
-        TimerManager.locationTimer = nil
-        if isOn {
-            TimerManager.locationTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(6), repeats: true, block: { (timer) in
-                self.locationManager.startUpdatingLocation()
-            })
-            TimerManager.locationTimer?.fire()
-        }
-    }
-    
-    private func drawMap(defaultLatitude:CGFloat, defaultLongitude:CGFloat) {
-        let cameraPosition = GMSCameraPosition.camera(withLatitude: defaultLatitude, longitude: defaultLongitude, zoom: defaultMaxZoom)
-        googleMap = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
-        googleMap?.setMinZoom(defaultMinZoom, maxZoom: defaultMaxZoom)
-        googleMap?.delegate = self
-        mapView.addSubview(googleMap!)
-        
-        googleMap?.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            googleMap!.leftAnchor.constraint(equalTo: mapView.leftAnchor, constant: 0),
-            googleMap!.rightAnchor.constraint(equalTo: mapView.rightAnchor, constant: 0),
-            googleMap!.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 0),
-            googleMap!.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 0)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    private func placeUserLocation(userLocation: CLLocationCoordinate2D) {
-        let userLatitude:CLLocationDegrees = userLocation.latitude
-        let userLongitude:CLLocationDegrees = userLocation.longitude
-
-        let userMarker:GMSMarker = GMSMarker()
-        userMarker.position = CLLocationCoordinate2D(latitude: userLatitude, longitude: userLongitude)
-        userMarker.tracksViewChanges = false
-
-        userMarker.map = self.googleMap!
-        
-        DispatchQueue.main.async {
-            self.showCamera()
-        }
-    }
-    
-    private func showCamera() {
-        var cameraPosition:GMSCameraPosition?
-        
-        if let location = user.location2D {
-            cameraPosition = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: defaultMaxZoom)
-        }
-        if let position = cameraPosition {
-            googleMap?.animate(to: position)
-        }
-    }
-    
-    @IBAction func showMoreInfoClicked(_ sender: UIButton) {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.4, animations: { () -> Void in
-                self.infoViewBottomC.constant = CGFloat(-20).ws
-                self.view.layoutIfNeeded()
-            })
-        }
-    }
-    
-    @IBAction func showLessInfoClicked(_ sender: UIButton) {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.4, animations: { () -> Void in
-                self.infoViewBottomC.constant = CGFloat(-310).ws
-                self.view.layoutIfNeeded()
-            })
-        }
-    }
-    
-    @IBAction func documentClicked(_ sender: UIButton) {
+    @objc func documentClicked(sender:UIButton) {
         if let imageVC = appDelegate.mainStoryboard.instantiateViewController(withIdentifier: "ImageVC") as? ImageViewController {
             imageVC.documentImage = UIImage(named: "DocumentImage")
             imageVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -236,142 +91,50 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func showNotificationsClicked(_ sender: UIButton) {
-    }
-    
-    @IBAction func confirmClicked(_ sender: UIButton) {
+    @objc func confirmClicked(sender:UIButton) {
         if let addImageVC = appDelegate.mainStoryboard.instantiateViewController(withIdentifier: "AddImageVC") as? AddImageViewController {
             navigationController?.pushViewController(addImageVC, animated: true)
         }
     }
-}
-
-extension HomeViewController: GMSMapViewDelegate {
     
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        googleMap?.center = self.mapView.center
-        latitudeLabel.text = "Latitude: \(String(format: "%.3f",  position.target.latitude))"
-        longtitudeLabel.text = "Longtitude: \(String(format: "%.3f",  position.target.longitude))"
-    }
-    
-    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+    @IBAction func showNotificationsClicked(_ sender: UIButton) {
         
-    }
-    
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        
-    }
-    
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        debugPrint("User marker clicked")
-        return true
-    }
-}
-
-extension HomeViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = manager.location else { return }
-        locationManager.stopUpdatingLocation()
-        
-        let coordinate = location.coordinate
-        user.location2D = coordinate
-        debugPrint("Location Updated - \(coordinate)")
-        
-        DispatchQueue.main.async(execute: {() -> Void in
-            self.placeUserLocation(userLocation: coordinate)
-        })
-            
-        //convertToAddresUsing(location: coordinate) //Cannot use
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        debugPrint("Location failed - \(error.localizedDescription)")
     }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == infoCollectionView {
-            return infos.count
-        }
-        else if collectionView == tabCollectionView {
-            return tabImages.count
-        }
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == infoCollectionView {
-            return CGFloat(12).ws
-        }
-        return 0
+        return tabImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == infoCollectionView {
-            transInfoCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierTransportationInfoCVC, for: indexPath) as? TransportationInfoCollectionViewCell
-            
-            transInfoCell?.titleLabel.text = infos[indexPath.row].title
-            transInfoCell?.infoLabel.text = infos[indexPath.row].info
-            
-            return transInfoCell!
+        tabItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierTabItemCVC, for: indexPath) as? TabItemCollectionViewCell
+        
+        tabItemCell?.tabImageView.image = UIImage(named: "")
+        if let image = tabImages[indexPath.row].imageKey {
+            tabItemCell?.tabImageView.image = UIImage(named: image)
         }
-        else if collectionView == tabCollectionView {
-            tabItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierTabItemCVC, for: indexPath) as? TabItemCollectionViewCell
-            
-            tabItemCell?.tabImageView.image = UIImage(named: "")
-            if let image = tabImages[indexPath.row].imageKey {
-                tabItemCell?.tabImageView.image = UIImage(named: image)
-            }
-            
-            (indexPath.row == tabImages.count-1) ? (tabItemCell?.seperatorView.isHidden = true) : (tabItemCell?.seperatorView.isHidden = false)
-            
-            return tabItemCell!
-        }
-        return UICollectionViewCell()
+        
+        (indexPath.row == tabImages.count-1) ? (tabItemCell?.seperatorView.isHidden = true) : (tabItemCell?.seperatorView.isHidden = false)
+        
+        return tabItemCell!
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == infoCollectionView {
-            return CGSize(width: CGFloat(122).ws, height: CGFloat(33).ws)
-        }
-        else if collectionView == tabCollectionView {
-            return CGSize(width: CGFloat(64).ws, height: CGFloat(34).ws)
-        }
-        return CGSize.zero
+        return CGSize(width: CGFloat(64).ws, height: CGFloat(34).ws)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == tabCollectionView {
-            if let oldIndex = tabImages.firstIndex(where: {$0.isSelected == true}) {
-                tabImages[oldIndex].imageKey = "Tab\(oldIndex+1)Icon" //Tab1Icon
-                tabImages[oldIndex].isSelected = false
-            }
-            tabImages[indexPath.row].isSelected = true
-            tabImages[indexPath.row].imageKey = "SelectedTab\(indexPath.row+1)Icon" //SelectedTab1Icon
-            
-            DispatchQueue.main.async {
-                self.tabCollectionView.reloadData()
-            }
+        if let oldIndex = tabImages.firstIndex(where: {$0.isSelected == true}) {
+            tabImages[oldIndex].imageKey = "Tab\(oldIndex+1)Icon" //Tab1Icon
+            tabImages[oldIndex].isSelected = false
         }
-    }
-}
-
-extension HomeViewController {
-    
-    //Cannot use the Geocoding API because it is not free
-    private func convertToAddresUsing(location: CLLocationCoordinate2D) {
-        ServiceManager.shared.getAddressDetail(coordinate: location) { (response, errorCode, isOK) in
-            if isOK {
-                if let geoAddress = response {
-                    self.user.geoLocatedAddress = geoAddress
-                }
-            }
-            else {
-                self.showAlert(with: "\(errorCode): \(response ?? "No Response")", title: "", yesButtonText: "OK", noButtonText: nil, yesTapped: nil)
-            }
+        tabImages[indexPath.row].isSelected = true
+        tabImages[indexPath.row].imageKey = "SelectedTab\(indexPath.row+1)Icon" //SelectedTab1Icon
+        
+        DispatchQueue.main.async {
+            self.tabCollectionView.reloadData()
         }
     }
 }
