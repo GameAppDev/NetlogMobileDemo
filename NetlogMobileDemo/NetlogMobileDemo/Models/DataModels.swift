@@ -32,3 +32,8 @@ struct Image {
     var data:Data?
     var type:String?
 }
+
+struct TabImage {
+    var imageKey:String?
+    var isSelected:Bool = false
+}

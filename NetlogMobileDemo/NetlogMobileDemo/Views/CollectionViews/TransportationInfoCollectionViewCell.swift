@@ -16,7 +16,7 @@ class TransportationInfoCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var infoLabel: UILabel!
     
-    let identifierTICVC:String = "TransportationInfoCollViewCell"
+    let identifierTransportationInfoCVC:String = "TransportationInfoCollViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

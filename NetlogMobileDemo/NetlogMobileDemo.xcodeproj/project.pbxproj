@@ -11,6 +11,8 @@
 		182055F127DCA52A0096AC19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182055EF27DCA52A0096AC19 /* Main.storyboard */; };
 		182055F327DCA52B0096AC19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182055F227DCA52B0096AC19 /* Assets.xcassets */; };
 		182055F627DCA52B0096AC19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182055F427DCA52B0096AC19 /* LaunchScreen.storyboard */; };
+		1854C2E227DFAFC4004F25AF /* TabItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854C2E027DFAFC4004F25AF /* TabItemCollectionViewCell.swift */; };
+		1854C2E327DFAFC4004F25AF /* TabItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854C2E127DFAFC4004F25AF /* TabItemCollectionViewCell.xib */; };
 		18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F7D27DCAA0400F9B695 /* RootViewController.swift */; };
 		18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */; };
 		18824F8527DCAC3A00F9B695 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F8427DCAC3A00F9B695 /* AppStyle.swift */; };
@@ -26,6 +28,9 @@
 		18AFC2F627DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2F427DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift */; };
 		18AFC2F727DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AFC2F527DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib */; };
 		18AFC2F927DD0E5B00580D89 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFC2F827DD0E5B00580D89 /* ImageViewController.swift */; };
+		18C79B1627E08F6000BD9B98 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C79B1527E08F6000BD9B98 /* MapView.xib */; };
+		18C79B1827E08F7700BD9B98 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C79B1727E08F7700BD9B98 /* MapView.swift */; };
+		18C79B1A27E0953900BD9B98 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C79B1927E0953900BD9B98 /* Helper.swift */; };
 		B6331040E778A6BC159C06F6 /* Pods_NetlogMobileDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +51,8 @@
 		182055F227DCA52B0096AC19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		182055F527DCA52B0096AC19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182055F727DCA52B0096AC19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1854C2E027DFAFC4004F25AF /* TabItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		1854C2E127DFAFC4004F25AF /* TabItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		18824F7D27DCAA0400F9B695 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		18824F7F27DCAB5E00F9B695 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18824F8427DCAC3A00F9B695 /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
@@ -62,6 +69,9 @@
 		18AFC2F427DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		18AFC2F527DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportationInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		18AFC2F827DD0E5B00580D89 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		18C79B1527E08F6000BD9B98 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		18C79B1727E08F7700BD9B98 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		18C79B1927E0953900BD9B98 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		235E26FAFEC3278ECEAB6403 /* Pods_NetlogMobileDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetlogMobileDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C8B7D16C141C2C1A8A86B7 /* Pods-NetlogMobileDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetlogMobileDemo.debug.xcconfig"; path = "Target Support Files/Pods-NetlogMobileDemo/Pods-NetlogMobileDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E9299CBC4092F21E91B5929F /* Pods-NetlogMobileDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetlogMobileDemo.release.xcconfig"; path = "Target Support Files/Pods-NetlogMobileDemo/Pods-NetlogMobileDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				18824F8427DCAC3A00F9B695 /* AppStyle.swift */,
+				18C79B1927E0953900BD9B98 /* Helper.swift */,
 				18AFC2E727DCB07E00580D89 /* Extensions.swift */,
 				18AFC2E927DCCCA600580D89 /* TimerManager.swift */,
 			);
@@ -191,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				18AFC2F327DD018300580D89 /* CollectionViews */,
+				18C79B1727E08F7700BD9B98 /* MapView.swift */,
+				18C79B1527E08F6000BD9B98 /* MapView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +213,8 @@
 			children = (
 				18AFC2F427DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift */,
 				18AFC2F527DD01BB00580D89 /* TransportationInfoCollectionViewCell.xib */,
+				1854C2E027DFAFC4004F25AF /* TabItemCollectionViewCell.swift */,
+				1854C2E127DFAFC4004F25AF /* TabItemCollectionViewCell.xib */,
 			);
 			path = CollectionViews;
 			sourceTree = "<group>";
@@ -296,9 +311,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C79B1627E08F6000BD9B98 /* MapView.xib in Resources */,
 				18AFC2E627DCAFAD00580D89 /* Roboto-Regular.ttf in Resources */,
 				18AFC2E527DCAFAD00580D89 /* Roboto-Medium.ttf in Resources */,
 				182055F627DCA52B0096AC19 /* LaunchScreen.storyboard in Resources */,
+				1854C2E327DFAFC4004F25AF /* TabItemCollectionViewCell.xib in Resources */,
 				182055F327DCA52B0096AC19 /* Assets.xcassets in Resources */,
 				18AFC2E427DCAFAD00580D89 /* Roboto-Bold.ttf in Resources */,
 				182055F127DCA52A0096AC19 /* Main.storyboard in Resources */,
@@ -363,9 +380,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18AFC2E827DCB07E00580D89 /* Extensions.swift in Sources */,
+				18C79B1A27E0953900BD9B98 /* Helper.swift in Sources */,
 				18AFC2EF27DCCEB900580D89 /* DataModels.swift in Sources */,
 				18AFC2F927DD0E5B00580D89 /* ImageViewController.swift in Sources */,
 				18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */,
+				18C79B1827E08F7700BD9B98 /* MapView.swift in Sources */,
 				182055EA27DCA52A0096AC19 /* AppDelegate.swift in Sources */,
 				18AFC2F627DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift in Sources */,
 				18AFC2EA27DCCCA600580D89 /* TimerManager.swift in Sources */,
@@ -373,6 +392,7 @@
 				18AFC2F127DCE73E00580D89 /* ServiceManager.swift in Sources */,
 				18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */,
 				18824F8527DCAC3A00F9B695 /* AppStyle.swift in Sources */,
+				1854C2E227DFAFC4004F25AF /* TabItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,12 +557,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1001;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NetlogMobileDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) needs your device camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) needs to get your current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "armv7 location-services gps";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -567,12 +590,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1001;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NetlogMobileDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) needs your device camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) needs to get your current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "armv7 location-services gps";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -18,7 +18,8 @@ class HomeViewController: UIViewController {
     @IBOutlet var navbarSTitleLabel: UILabel!
     @IBOutlet var navbarLTitleLabel: UILabel!
     
-    @IBOutlet var selectionView: UIView!
+    @IBOutlet var notifCountBGView: UIView!
+    @IBOutlet var notifCountLabel: UILabel!
     
     @IBOutlet var mapView: UIView!
     
@@ -27,8 +28,12 @@ class HomeViewController: UIViewController {
     
     @IBOutlet var infoView: UIView!
     @IBOutlet var infoCollectionView: UICollectionView!
-    let identifierTICVC:String = "TransportationInfoCollViewCell"
+    let identifierTransportationInfoCVC:String = "TransportationInfoCollViewCell"
     var transInfoCell:TransportationInfoCollectionViewCell?
+    
+    @IBOutlet var tabCollectionView: UICollectionView!
+    let identifierTabItemCVC:String = "TabItemCollViewCell"
+    var tabItemCell:TabItemCollectionViewCell?
     
     @IBOutlet var bottomBarView: UIView!
     @IBOutlet var bottomBarInfoLabel: UILabel!
@@ -44,8 +49,8 @@ class HomeViewController: UIViewController {
     
     var user:User = User()
     
-    let titles:[String] = ["Yük Tipi", "Yükleme Tipi", "Yükleme Adedi", "Yüklerin Kilosu", "Yükleme Saati", "Hacim", "Çıkış Gümrük"]
-    let answers:[String] = ["Genel Kargo", "Paletli", "243", "24 Ton", "14:30", "67 m3", "Kapıkule"]
+    var tabImages:[TabImage] = []
+    
     var infos:[TransportationInfoResponse] = []
     
     override func viewDidLoad() {
@@ -54,15 +59,19 @@ class HomeViewController: UIViewController {
         view.layoutIfNeeded()
         
         setTransportationInfos()
+        setTabImages()
         
         DispatchQueue.main.async {
             self.setupViews()
             self.drawMap(defaultLatitude: -33.86, defaultLongitude: 151.20)
         }
         
-        infoCollectionView.register(UINib(nibName: "TransportationInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: identifierTICVC)
+        infoCollectionView.registerCell(nibName: "TransportationInfoCollectionViewCell", identifier: identifierTransportationInfoCVC)
         infoCollectionView.dataSource = self
         infoCollectionView.delegate = self
+        tabCollectionView.registerCell(nibName: "TabItemCollectionViewCell", identifier: identifierTabItemCVC)
+        tabCollectionView.dataSource = self
+        tabCollectionView.delegate = self
         
         setUpLocationServices()
     }
@@ -89,7 +98,13 @@ class HomeViewController: UIViewController {
         navbarLTitleLabel.textColor = UIColor.textColour
         navbarLTitleLabel.text = "Adlershof" //Should be dynamic
         
-        selectionView.backgroundColor = UIColor.selectionViewColour
+        notifCountBGView.backgroundColor = UIColor.red
+        notifCountBGView.layer.cornerRadius = notifCountBGView.frame.height/2
+        notifCountLabel.font = UIFont.boldRoboto10
+        notifCountLabel.textColor = UIColor.white
+        notifCountLabel.text = "2"
+        
+        tabCollectionView.backgroundColor = UIColor.selectionViewColour
         
         latitudeLabel.font = UIFont.mediumRoboto16
         latitudeLabel.textColor = UIColor.textColour
@@ -117,9 +132,21 @@ class HomeViewController: UIViewController {
     }
     
     private func setTransportationInfos() {
+        let titles:[String] = ["Yük Tipi", "Yükleme Tipi", "Yükleme Adedi", "Yüklerin Kilosu", "Yükleme Saati", "Hacim", "Çıkış Gümrük"]
+        let answers:[String] = ["Genel Kargo", "Paletli", "243", "24 Ton", "14:30", "67 m3", "Kapıkule"]
+        
         for (index, title) in titles.enumerated() {
             let newInfo = TransportationInfoResponse(title: title, info: answers[index])
             infos.append(newInfo)
+        }
+    }
+    
+    private func setTabImages() {
+        let images:[String] = ["Tab1Icon", "Tab2Icon", "Tab3Icon", "Tab4Icon", "Tab5Icon"]
+        
+        for (_, image) in images.enumerated() {
+            let newTabImage = TabImage(imageKey: image, isSelected: false)
+            tabImages.append(newTabImage)
         }
     }
     
@@ -209,6 +236,9 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func showNotificationsClicked(_ sender: UIButton) {
+    }
+    
     @IBAction func confirmClicked(_ sender: UIButton) {
         if let addImageVC = appDelegate.mainStoryboard.instantiateViewController(withIdentifier: "AddImageVC") as? AddImageViewController {
             navigationController?.pushViewController(addImageVC, animated: true)
@@ -233,7 +263,7 @@ extension HomeViewController: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print("User marker clicked")
+        debugPrint("User marker clicked")
         return true
     }
 }
@@ -246,7 +276,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         
         let coordinate = location.coordinate
         user.location2D = coordinate
-        print("Location Updated - \(coordinate)")
+        debugPrint("Location Updated - \(coordinate)")
         
         DispatchQueue.main.async(execute: {() -> Void in
             self.placeUserLocation(userLocation: coordinate)
@@ -256,31 +286,76 @@ extension HomeViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location failed - \(error.localizedDescription)")
+        debugPrint("Location failed - \(error.localizedDescription)")
     }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return infos.count
+        if collectionView == infoCollectionView {
+            return infos.count
+        }
+        else if collectionView == tabCollectionView {
+            return tabImages.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return CGFloat(12).ws
+        if collectionView == infoCollectionView {
+            return CGFloat(12).ws
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        transInfoCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierTICVC, for: indexPath) as? TransportationInfoCollectionViewCell
-        
-        transInfoCell?.titleLabel.text = infos[indexPath.row].title
-        transInfoCell?.infoLabel.text = infos[indexPath.row].info
-        
-        return transInfoCell!
+        if collectionView == infoCollectionView {
+            transInfoCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierTransportationInfoCVC, for: indexPath) as? TransportationInfoCollectionViewCell
+            
+            transInfoCell?.titleLabel.text = infos[indexPath.row].title
+            transInfoCell?.infoLabel.text = infos[indexPath.row].info
+            
+            return transInfoCell!
+        }
+        else if collectionView == tabCollectionView {
+            tabItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierTabItemCVC, for: indexPath) as? TabItemCollectionViewCell
+            
+            tabItemCell?.tabImageView.image = UIImage(named: "")
+            if let image = tabImages[indexPath.row].imageKey {
+                tabItemCell?.tabImageView.image = UIImage(named: image)
+            }
+            
+            (indexPath.row == tabImages.count-1) ? (tabItemCell?.seperatorView.isHidden = true) : (tabItemCell?.seperatorView.isHidden = false)
+            
+            return tabItemCell!
+        }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(122).ws, height: CGFloat(33).ws)
+        if collectionView == infoCollectionView {
+            return CGSize(width: CGFloat(122).ws, height: CGFloat(33).ws)
+        }
+        else if collectionView == tabCollectionView {
+            return CGSize(width: CGFloat(64).ws, height: CGFloat(34).ws)
+        }
+        return CGSize.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == tabCollectionView {
+            if let oldIndex = tabImages.firstIndex(where: {$0.isSelected == true}) {
+                tabImages[oldIndex].imageKey = "Tab\(oldIndex+1)Icon" //Tab1Icon
+                tabImages[oldIndex].isSelected = false
+            }
+            tabImages[indexPath.row].isSelected = true
+            tabImages[indexPath.row].imageKey = "SelectedTab\(indexPath.row+1)Icon" //SelectedTab1Icon
+            
+            DispatchQueue.main.async {
+                self.tabCollectionView.reloadData()
+            }
+        }
     }
 }
 

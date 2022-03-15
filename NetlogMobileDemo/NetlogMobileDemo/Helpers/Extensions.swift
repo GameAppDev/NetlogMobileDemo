@@ -23,6 +23,13 @@ extension UITableView {
     }
 }
 
+extension UICollectionView {
+    
+    func registerCell(nibName:String, identifier:String) {
+        self.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: identifier)
+    }
+}
+
 extension UIViewController {
     
     func showAlert(with message:String, title:String, yesButtonText:String, noButtonText:String?, yesTapped:(()->Void)?) {
@@ -47,7 +54,7 @@ extension UIViewController {
             alertContr.addAction(action1)
         }
         if let action2Title = action2Title {
-            let action2 = UIAlertAction(title: action2Title, style: .destructive, handler: action2Handler)
+            let action2 = UIAlertAction(title: action2Title, style: .default, handler: action2Handler)
             alertContr.addAction(action2)
         }
         alertContr.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
