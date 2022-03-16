@@ -11,6 +11,9 @@
 		182055F127DCA52A0096AC19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182055EF27DCA52A0096AC19 /* Main.storyboard */; };
 		182055F327DCA52B0096AC19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182055F227DCA52B0096AC19 /* Assets.xcassets */; };
 		182055F627DCA52B0096AC19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182055F427DCA52B0096AC19 /* LaunchScreen.storyboard */; };
+		1834302F27E24FB200D21385 /* DefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834302E27E24FB200D21385 /* DefaultView.swift */; };
+		1834303127E24FD300D21385 /* DefaultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834303027E24FD300D21385 /* DefaultView.xib */; };
+		1834303427E267B600D21385 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834303327E267B600D21385 /* KeyChain.swift */; };
 		1854C2E227DFAFC4004F25AF /* TabItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854C2E027DFAFC4004F25AF /* TabItemCollectionViewCell.swift */; };
 		1854C2E327DFAFC4004F25AF /* TabItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854C2E127DFAFC4004F25AF /* TabItemCollectionViewCell.xib */; };
 		18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824F7D27DCAA0400F9B695 /* RootViewController.swift */; };
@@ -51,6 +54,9 @@
 		182055F227DCA52B0096AC19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		182055F527DCA52B0096AC19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182055F727DCA52B0096AC19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1834302E27E24FB200D21385 /* DefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultView.swift; sourceTree = "<group>"; };
+		1834303027E24FD300D21385 /* DefaultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultView.xib; sourceTree = "<group>"; };
+		1834303327E267B600D21385 /* KeyChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		1854C2E027DFAFC4004F25AF /* TabItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		1854C2E127DFAFC4004F25AF /* TabItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		18824F7D27DCAA0400F9B695 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 		18824F8327DCAC2B00F9B695 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1834303327E267B600D21385 /* KeyChain.swift */,
 				18824F8427DCAC3A00F9B695 /* AppStyle.swift */,
 				18C79B1927E0953900BD9B98 /* Helper.swift */,
 				18AFC2E727DCB07E00580D89 /* Extensions.swift */,
@@ -204,6 +211,8 @@
 				18AFC2F327DD018300580D89 /* CollectionViews */,
 				18C79B1727E08F7700BD9B98 /* MapView.swift */,
 				18C79B1527E08F6000BD9B98 /* MapView.xib */,
+				1834302E27E24FB200D21385 /* DefaultView.swift */,
+				1834303027E24FD300D21385 /* DefaultView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +322,7 @@
 			files = (
 				18C79B1627E08F6000BD9B98 /* MapView.xib in Resources */,
 				18AFC2E627DCAFAD00580D89 /* Roboto-Regular.ttf in Resources */,
+				1834303127E24FD300D21385 /* DefaultView.xib in Resources */,
 				18AFC2E527DCAFAD00580D89 /* Roboto-Medium.ttf in Resources */,
 				182055F627DCA52B0096AC19 /* LaunchScreen.storyboard in Resources */,
 				1854C2E327DFAFC4004F25AF /* TabItemCollectionViewCell.xib in Resources */,
@@ -384,6 +394,7 @@
 				18AFC2EF27DCCEB900580D89 /* DataModels.swift in Sources */,
 				18AFC2F927DD0E5B00580D89 /* ImageViewController.swift in Sources */,
 				18824F7E27DCAA0400F9B695 /* RootViewController.swift in Sources */,
+				1834303427E267B600D21385 /* KeyChain.swift in Sources */,
 				18C79B1827E08F7700BD9B98 /* MapView.swift in Sources */,
 				182055EA27DCA52A0096AC19 /* AppDelegate.swift in Sources */,
 				18AFC2F627DD01BB00580D89 /* TransportationInfoCollectionViewCell.swift in Sources */,
@@ -393,6 +404,7 @@
 				18824F8027DCAB5E00F9B695 /* HomeViewController.swift in Sources */,
 				18824F8527DCAC3A00F9B695 /* AppStyle.swift in Sources */,
 				1854C2E227DFAFC4004F25AF /* TabItemCollectionViewCell.swift in Sources */,
+				1834302F27E24FB200D21385 /* DefaultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

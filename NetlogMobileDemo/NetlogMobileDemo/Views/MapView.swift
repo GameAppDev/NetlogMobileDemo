@@ -13,7 +13,7 @@ import UIKit
 import GoogleMaps
 
 class MapView: UIView {
-
+    
     @IBOutlet var view: UIView!
     
     @IBOutlet var mapView: UIView!
@@ -43,9 +43,17 @@ class MapView: UIView {
     
     var infos:[TransportationInfoResponse] = []
     
+    var isOpenInfoView:Bool = false
+    
+    convenience init(frame: CGRect, isOpen:Bool) {
+        self.init(frame:  frame)
+        isOpenInfoView = isOpen
+        
+        initSubviews()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame:  frame)
-        initSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,17 +65,19 @@ class MapView: UIView {
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: Bundle(for: type(of: self)))
         nib.instantiate(withOwner: self, options: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        
+        addConstraints()
+        
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        
+        setTransportationInfos()
         
         DispatchQueue.main.async {
             self.setupViews()
             self.drawMap(defaultLatitude: -33.86, defaultLongitude: 151.20)
         }
-        
-        setTransportationInfos()
-        
-        addSubview(view)
-        
-        addConstraints()
         
         setUpLocationServices()
         
@@ -76,13 +86,9 @@ class MapView: UIView {
         infoCollectionView.registerCell(nibName: "TransportationInfoCollectionViewCell", identifier: identifierTransportationInfoCVC)
         infoCollectionView.dataSource = self
         infoCollectionView.delegate = self
-        
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
     }
     
     private func setupViews() {
-        
         latitudeLabel.font = UIFont.mediumRoboto16
         latitudeLabel.textColor = UIColor.textColour
         longtitudeLabel.font = UIFont.mediumRoboto16
@@ -103,7 +109,7 @@ class MapView: UIView {
         bottomBarConfirmButton.backgroundColor = UIColor.white
         bottomBarConfirmButton.layer.cornerRadius = CGFloat(10).ws
         
-        infoViewBottomC.constant = CGFloat(-20).ws
+        isOpenInfoView ? (infoViewBottomC.constant = CGFloat(-20).ws) : (infoViewBottomC.constant = CGFloat(-310).ws)
     }
 
     private func addConstraints() {

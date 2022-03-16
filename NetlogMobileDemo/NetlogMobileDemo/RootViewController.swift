@@ -24,6 +24,8 @@ class RootViewController: UIViewController {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
+        handleKeyChain()
+        
         DispatchQueue.main.async {
             self.setupViews()
         }
@@ -41,5 +43,20 @@ class RootViewController: UIViewController {
     private func setupViews() {
         topSafeArea.backgroundColor = UIColor.topSafeAreaColour
         bottomSafeArea.backgroundColor = UIColor.bottomSafeAreaColour
+    }
+    
+    private func handleKeyChain() {
+        if let receivedData = KeyChain.load(key: "DeviceID") {
+            if let result = String(data: receivedData, encoding: String.Encoding.utf8) {
+                debugPrint("KeyChain DeviceID: ", result)
+            }
+        }
+        else {
+            let deviceID:String = KeyChain.createUniqueID()
+            if let data = deviceID.data(using: .utf8) {
+                let status = KeyChain.save(key: "DeviceID", data: data)
+                debugPrint("KeyChain Status: ", status)
+            }
+        }
     }
 }

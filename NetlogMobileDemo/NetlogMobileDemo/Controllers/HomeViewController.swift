@@ -28,15 +28,18 @@ class HomeViewController: UIViewController {
     
     var tabImages:[TabImage] = []
     
+    let selectionScrollView:UIScrollView = UIScrollView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
-        setTabImages()
+        getTabItems()
         
         DispatchQueue.main.async {
             self.setupViews()
+            self.getScrollViewItems()
         }
         
         tabCollectionView.registerCell(nibName: "TabItemCollectionViewCell", identifier: identifierTabItemCVC)
@@ -64,23 +67,74 @@ class HomeViewController: UIViewController {
         notifCountBGView.layer.cornerRadius = notifCountBGView.frame.height/2
         notifCountLabel.font = UIFont.boldRoboto10
         notifCountLabel.textColor = UIColor.white
-        notifCountLabel.text = "2"
+        notifCountLabel.text = "2" //Should be dynamic
         
         tabCollectionView.backgroundColor = UIColor.selectionViewColour
-        
-        let mapView = MapView(frame: CGRect(x: 0, y: 0, width: scrollableView.frame.width, height: scrollableView.frame.height))
-        mapView.documentButton.addTarget(self, action: #selector(documentClicked(sender:)), for: .touchUpInside)
-        mapView.bottomBarConfirmButton.addTarget(self, action: #selector(confirmClicked(sender:)), for: .touchUpInside)
-        scrollableView.addSubview(mapView)
     }
     
-    private func setTabImages() {
+    private func getTabItems() {
         let images:[String] = ["Tab1Icon", "Tab2Icon", "Tab3Icon", "Tab4Icon", "Tab5Icon"]
         
         for (_, image) in images.enumerated() {
             let newTabImage = TabImage(imageKey: image, isSelected: false)
             tabImages.append(newTabImage)
         }
+    }
+    
+    private func setTabItems(selectedIndex:Int) {
+        if let oldIndex = tabImages.firstIndex(where: {$0.isSelected == true}) {
+            tabImages[oldIndex].imageKey = "Tab\(oldIndex+1)Icon" //Tab1Icon
+            tabImages[oldIndex].isSelected = false
+        }
+        tabImages[selectedIndex].isSelected = true
+        tabImages[selectedIndex].imageKey = "SelectedTab\(selectedIndex+1)Icon" //SelectedTab1Icon
+        
+        DispatchQueue.main.async {
+            self.tabCollectionView.reloadData()
+            self.setScrollViewItems(index: selectedIndex)
+        }
+    }
+    
+    private func getScrollViewItems() {
+        let defaultGCRect:CGRect = CGRect(x: 0, y: 0, width: scrollableView.frame.width, height: scrollableView.frame.height)
+        
+        let selection1View = DefaultView(frame: defaultGCRect, viewStatus: .selection1, viewText: "First View")
+        
+        let selection2View = MapView(frame: defaultGCRect, isOpen: true)
+        selection2View.documentButton.addTarget(self, action: #selector(documentClicked(sender:)), for: .touchUpInside)
+        selection2View.bottomBarConfirmButton.addTarget(self, action: #selector(confirmClicked(sender:)), for: .touchUpInside)
+        
+        let selection3View = DefaultView(frame: defaultGCRect, viewStatus: .selection3, viewText: "Third View")
+        
+        let selection4View = MapView(frame: defaultGCRect, isOpen: false)
+        selection4View.documentButton.addTarget(self, action: #selector(documentClicked(sender:)), for: .touchUpInside)
+        selection4View.bottomBarConfirmButton.addTarget(self, action: #selector(confirmClicked(sender:)), for: .touchUpInside)
+        
+        let selection5View = DefaultView(frame: defaultGCRect, viewStatus: .selection5, viewText: "Fifth View")
+        
+        let selectionViews:[UIView] = [selection1View, selection2View, selection3View, selection4View, selection5View]
+        
+        selectionScrollView.showsHorizontalScrollIndicator = false
+        selectionScrollView.isScrollEnabled = false //prevent to scroll
+        selectionScrollView.isPagingEnabled = true
+        selectionScrollView.contentSize = CGSize(width: (scrollableView.frame.width * CGFloat(selectionViews.count)), height: scrollableView.frame.height)
+        selectionScrollView.frame = defaultGCRect
+        
+        for (index, _) in selectionViews.enumerated() {
+            selectionScrollView.addSubview(selectionViews[index])
+            selectionViews[index].frame = CGRect(x: (scrollableView.frame.width * CGFloat(index)), y: 0, width: scrollableView.frame.width, height: scrollableView.frame.height)
+        }
+        
+        scrollableView.addSubview(selectionScrollView)
+        
+        scrollableView.setNeedsLayout()
+        scrollableView.layoutIfNeeded()
+        
+        setTabItems(selectedIndex: 0) //default value when screen come up
+    }
+    
+    private func setScrollViewItems(index:Int) {
+        selectionScrollView.setContentOffset(CGPoint(x: (scrollableView.frame.width * CGFloat(index)), y: 0), animated: true)
     }
     
     @objc func documentClicked(sender:UIButton) {
@@ -98,7 +152,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func showNotificationsClicked(_ sender: UIButton) {
-        
+        showAlert(with: "Notifications was read", title: "", yesButtonText: "Ok", noButtonText: nil) {
+            self.notifCountBGView.isHidden = true
+        }
     }
 }
 
@@ -126,15 +182,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let oldIndex = tabImages.firstIndex(where: {$0.isSelected == true}) {
-            tabImages[oldIndex].imageKey = "Tab\(oldIndex+1)Icon" //Tab1Icon
-            tabImages[oldIndex].isSelected = false
-        }
-        tabImages[indexPath.row].isSelected = true
-        tabImages[indexPath.row].imageKey = "SelectedTab\(indexPath.row+1)Icon" //SelectedTab1Icon
-        
-        DispatchQueue.main.async {
-            self.tabCollectionView.reloadData()
-        }
+        setTabItems(selectedIndex: indexPath.row)
     }
 }

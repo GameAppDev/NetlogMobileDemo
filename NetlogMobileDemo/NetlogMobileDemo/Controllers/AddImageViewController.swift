@@ -34,7 +34,7 @@ class AddImageViewController: UIViewController {
     
     var image:Image? = Image()
     
-    private lazy var imagePickerC: UIImagePickerController = {
+    private lazy var imagePickerC: UIImagePickerController = { //create if called
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
@@ -44,7 +44,7 @@ class AddImageViewController: UIViewController {
     }()
 
     @available(iOS 14, *)
-    private lazy var phPickerVC: PHPickerViewController = {
+    private lazy var phPickerVC: PHPickerViewController = { //create if called
         var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
         config.selectionLimit = 1
         config.filter = .images
@@ -125,8 +125,10 @@ class AddImageViewController: UIViewController {
                     }
                 }
                 else {
-                    self.showAlert(with: "No permission to open camera", title: "", yesButtonText: "Settings", noButtonText: "Cancel") {
-                        Helper.openAppSettings()
+                    DispatchQueue.main.async {
+                        self.showAlert(with: "No permission to open camera", title: "", yesButtonText: "Settings", noButtonText: "Cancel") {
+                            Helper.openAppSettings()
+                        }
                     }
                 }
             }
@@ -146,8 +148,10 @@ class AddImageViewController: UIViewController {
                     self.presentImagePicker()
                 }
                 else {
-                    self.showAlert(with: "No permission to open Gallery", title: "", yesButtonText: "Settings", noButtonText: "Cancel") {
-                        Helper.openAppSettings()
+                    DispatchQueue.main.async {
+                        self.showAlert(with: "No permission to open Gallery", title: "", yesButtonText: "Settings", noButtonText: "Cancel") {
+                            Helper.openAppSettings()
+                        }
                     }
                 }
             }
@@ -187,8 +191,7 @@ class AddImageViewController: UIViewController {
     private func setImageStatus(hasImage:Bool, selectedImage:UIImage?, imageType:String?) {
         if hasImage {
             if let imageData = selectedImage?.jpegData(compressionQuality: 0.4) {
-                image?.data = imageData
-                image?.type = imageType
+                image = Image(data: imageData, type: imageType)
                 
                 DispatchQueue.main.async { [self] in
                     deleteImgView.isHidden = false
@@ -227,13 +230,15 @@ class AddImageViewController: UIViewController {
     }
     
     @IBAction func sendImageClicked(_ sender: UIButton) {
-        if let data = image?.data, let type = image?.type {
-            debugPrint("Image Data: \(data) Image Type: \(type)")
-            showAlert(with: "Are you sure to send \(type) image?", title: "", yesButtonText: "Yes", noButtonText: "No") {
-                self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.async { [self] in
+            if let data = image?.data, let type = image?.type {
+                debugPrint("Image Data: \(data) Image Type: \(type)")
+                showAlert(with: "Are you sure to send \(type) image?", title: "", yesButtonText: "Yes", noButtonText: "No") {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
+            showAlert(with: "Please take a photo to submit", title: "", yesButtonText: "OK", noButtonText: nil, yesTapped: nil)
         }
-        showAlert(with: "Please take a photo to submit", title: "", yesButtonText: "OK", noButtonText: nil, yesTapped: nil)
     }
     
     @IBAction func addImageClicked(_ sender: UIButton) {
