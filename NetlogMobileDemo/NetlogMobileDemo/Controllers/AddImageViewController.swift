@@ -225,7 +225,11 @@ class AddImageViewController: UIViewController {
     
     @IBAction func retakeImageClicked(_ sender: UIButton) {
         showActionSheet(title: "Please take a photo", message: nil, action1Title: "Take a photo", action1Handler: { (_) in
+        #if targetEnvironment(simulator)
+            self.showAlert(with: "Please use physical device to open camera", title: "", yesButtonText: "OK", noButtonText: nil, yesTapped: nil)
+        #else
             self.openCamera()
+        #endif
         }, action2Title: nil, action2Handler: { (_) in })
     }
     
