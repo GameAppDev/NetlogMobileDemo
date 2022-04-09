@@ -207,10 +207,6 @@
                                 <rect key="frame" x="0.0" y="100" width="320" height="468"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="refHome" translatesAutoresizingMaskIntoConstraints="NO" id="4qs-VU-ZP6">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5cA-N7-7Cs"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -585,10 +581,6 @@
                                     <constraint firstItem="ZjO-TR-x4w" firstAttribute="top" secondItem="mA4-0S-dfZ" secondAttribute="top" id="kDd-oO-G65"/>
                                 </constraints>
                             </view>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="refAddImage" translatesAutoresizingMaskIntoConstraints="NO" id="vlQ-Ie-wAu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N0K-nd-cvE"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -719,10 +711,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Tz7-M8-pXK" secondAttribute="trailing" id="cyu-P9-aRM"/>
                                 </constraints>
                             </view>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DocumentImage" translatesAutoresizingMaskIntoConstraints="NO" id="2Hn-d0-2nz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="12n-2k-Xof"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -779,11 +767,8 @@
         <image name="AddImageIcon" width="200" height="200"/>
         <image name="CancelIcon" width="200" height="200"/>
         <image name="DeleteIcon" width="200" height="40"/>
-        <image name="DocumentImage" width="750" height="1334"/>
         <image name="NavbarNotifIcon" width="171.42900085449219" height="200"/>
         <image name="SendImageIcon" width="284.2130126953125" height="200"/>
         <image name="TakeImageIcon" width="200.11099243164062" height="200"/>
-        <image name="refAddImage" width="750" height="1334"/>
-        <image name="refHome" width="750" height="1334"/>
     </resources>
 </document>

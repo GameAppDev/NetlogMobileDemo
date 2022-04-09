@@ -32,7 +32,7 @@ class AddImageViewController: UIViewController {
     @IBOutlet var addImgBGView: UIView!
     @IBOutlet var addImageLabel: UILabel!
     
-    var image:Image? = Image()
+    private var image:Image? = Image()
     
     private lazy var imagePickerC: UIImagePickerController = { //create if called
         let imagePicker = UIImagePickerController()
@@ -235,13 +235,14 @@ class AddImageViewController: UIViewController {
     
     @IBAction func sendImageClicked(_ sender: UIButton) {
         DispatchQueue.main.async { [self] in
-            if let data = image?.data, let type = image?.type {
-                debugPrint("Image Data: \(data) Image Type: \(type)")
-                showAlert(with: "Are you sure to send \(type) image?", title: "", yesButtonText: "Yes", noButtonText: "No") {
-                    self.navigationController?.popViewController(animated: true)
-                }
+            guard let data = image?.data, let type = image?.type else {
+                showAlert(with: "Please take a photo to submit", title: "", yesButtonText: "OK", noButtonText: nil, yesTapped: nil)
+                return
             }
-            showAlert(with: "Please take a photo to submit", title: "", yesButtonText: "OK", noButtonText: nil, yesTapped: nil)
+            debugPrint("Image Data: \(data) Image Type: \(type)")
+            showAlert(with: "Are you sure to send \(type) image?", title: "", yesButtonText: "Yes", noButtonText: "No") {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -303,8 +304,6 @@ extension AddImageViewController: UIDocumentPickerDelegate {
             
             self.setImageStatus(hasImage: true, selectedImage: urlImage, imageType: urlType)
         }
-        catch {
-            debugPrint("No data")
-        }
+        catch { debugPrint("No data") }
     }
 }

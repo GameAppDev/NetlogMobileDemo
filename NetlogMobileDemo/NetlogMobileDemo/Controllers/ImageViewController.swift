@@ -18,10 +18,10 @@ class ImageViewController: UIViewController {
     @IBOutlet var documentScrollView: UIScrollView!
     @IBOutlet var documentImageView: UIImageView!
     
-    var documentImage:UIImage?
+    var documentImage:UIImage? //previous
     
-    let minZoomScale:CGFloat = 1.0
-    let maxZoomScale:CGFloat = 4.0
+    private let minZoomScale:CGFloat = 1.0
+    private let maxZoomScale:CGFloat = 4.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ImageViewController: UIViewController {
         documentScrollView.minimumZoomScale = minZoomScale
         documentScrollView.maximumZoomScale = maxZoomScale
         
-        let doubleTapGR = UITapGestureRecognizer(target: self, action: #selector(zoomInOutRecognized(_:)))
+        let doubleTapGR = UITapGestureRecognizer(target: self, action: #selector(zoomOutRecognized(_:)))
         doubleTapGR.delegate = self
         doubleTapGR.numberOfTapsRequired = 2
         view.addGestureRecognizer(doubleTapGR)
@@ -75,11 +75,8 @@ extension ImageViewController: UIScrollViewDelegate {
 
 extension ImageViewController: UIGestureRecognizerDelegate {
     
-    @objc func zoomInOutRecognized(_ gesture: UITapGestureRecognizer) {
-        if documentScrollView.zoomScale == minZoomScale {
-            documentScrollView.setZoomScale(maxZoomScale, animated: true)
-        }
-        else {
+    @objc func zoomOutRecognized(_ gesture: UITapGestureRecognizer) {
+        if documentScrollView.zoomScale != minZoomScale {
             documentScrollView.setZoomScale(minZoomScale, animated: true)
         }
     }

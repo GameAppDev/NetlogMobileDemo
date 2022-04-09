@@ -21,14 +21,13 @@ class HomeViewController: UIViewController {
     @IBOutlet var notifCountLabel: UILabel!
     
     @IBOutlet var tabCollectionView: UICollectionView!
-    let identifierTabItemCVC:String = "TabItemCollViewCell"
-    var tabItemCell:TabItemCollectionViewCell?
+    private var tabItemCell:TabItemCollectionViewCell?
     
     @IBOutlet var scrollableView: UIView!
     
-    var tabImages:[TabImage] = []
+    private var tabImages:[TabImage] = []
     
-    let selectionScrollView:UIScrollView = UIScrollView()
+    private let selectionScrollView:UIScrollView = UIScrollView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +41,7 @@ class HomeViewController: UIViewController {
             self.getScrollViewItems()
         }
         
-        tabCollectionView.registerCell(nibName: "TabItemCollectionViewCell", identifier: identifierTabItemCVC)
+        tabCollectionView.registerCell(nibName: "TabItemCollectionViewCell", identifier: TabItemCollectionViewCell().identifier)
         tabCollectionView.dataSource = self
         tabCollectionView.delegate = self
     }
@@ -165,7 +164,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        tabItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierTabItemCVC, for: indexPath) as? TabItemCollectionViewCell
+        tabItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabItemCollectionViewCell().identifier, for: indexPath) as? TabItemCollectionViewCell
         
         tabItemCell?.tabImageView.image = UIImage(named: "")
         if let image = tabImages[indexPath.row].imageKey {

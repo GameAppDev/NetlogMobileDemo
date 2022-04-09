@@ -16,7 +16,7 @@ class TabItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var tabImageView: UIImageView!
     @IBOutlet var seperatorView: UIView!
     
-    let identifierTabItemCVC:String = "TabItemCollViewCell"
+    let identifier:String = "TabItemCollViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

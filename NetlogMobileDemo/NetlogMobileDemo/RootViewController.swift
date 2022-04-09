@@ -17,14 +17,14 @@ class RootViewController: UIViewController {
     @IBOutlet var topSafeArea: UIView!
     @IBOutlet var bottomSafeArea: UIView!
     
-    var activeNC:UINavigationController? //NC which currently on screen for Root
+    private var activeNC:UINavigationController? //NC which currently on screen for Root
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
-        handleKeyChain()
+        Helper.setDeviceIDtoKeyChain()
         
         DispatchQueue.main.async {
             self.setupViews()
@@ -43,20 +43,5 @@ class RootViewController: UIViewController {
     private func setupViews() {
         topSafeArea.backgroundColor = UIColor.topSafeAreaColour
         bottomSafeArea.backgroundColor = UIColor.bottomSafeAreaColour
-    }
-    
-    private func handleKeyChain() {
-        if let receivedData = KeyChain.load(key: "DeviceID") {
-            if let result = String(data: receivedData, encoding: String.Encoding.utf8) {
-                debugPrint("KeyChain DeviceID: ", result)
-            }
-        }
-        else {
-            let deviceID:String = KeyChain.createUniqueID()
-            if let data = deviceID.data(using: .utf8) {
-                let status = KeyChain.save(key: "DeviceID", data: data)
-                debugPrint("KeyChain Status: ", status)
-            }
-        }
     }
 }
